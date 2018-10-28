@@ -58,3 +58,11 @@ With `autocannon -c 100 -d 40 -p 10 localhost:8080`, `Kwang` reached around 80k 
 
 ## Contributing
 Feel free to submit issues and enhancement requests. This is a low priority side-project to me, so there is no ETA/promise, but feel free to open PRs.
+
+## Why? JVM framework like Vert.X/Ktor/Spring + GraalVM makes more sense
+Agree. 
+
+## Known issue
+For current Kotlin/Native version (`1.3.0-rc-190`), it will not compile due to linker issue (please clone Kotlin/Native from github or wait for the next release)
+
+(Kudos to Kotlin/Native team)
