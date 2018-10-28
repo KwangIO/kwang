@@ -41,12 +41,12 @@ The library is very EXPERIMENTAL and likely to change significantly, using it in
 Linux64
 
 ## Roadmap
-* [] Logging
-* [] H2O backend
-* [] Authentication
-* [] Finsish the wrapper
-* [] Optimize performance
-* [] Ready to use `klib`
-* [] Template support (low priority)
-* [] Eventbus
-* [] WebSocket
+* [ ] Logging
+* [ ] H2O backend
+* [ ] Authentication
+* [ ] Finsish the wrapper
+* [ ] Optimize performance
+* [ ] Ready to use `klib`
+* [ ] Template support (low priority)
+* [ ] Eventbus
+* [ ] WebSocket
