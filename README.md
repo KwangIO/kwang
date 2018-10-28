@@ -64,6 +64,9 @@ Feel free to submit issues and enhancement requests. This is a low priority side
 ## Why? JVM framework like Vert.X/Ktor/Spring + GraalVM makes more sense
 Agree. 
 
+## Can you change the name, it looks weird
+I am not in the mood of choosing bike shed's name. Moreover, it is not that weird you racist people! [Kwang in Korean](https://www.wikiwand.com/en/Kwang)
+
 ## Known issue
 For current Kotlin/Native version (`1.3.0-rc-190`), it will not compile due to linker issue (please clone Kotlin/Native from github or wait for the next release)
 
