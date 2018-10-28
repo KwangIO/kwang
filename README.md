@@ -1,6 +1,6 @@
 # Kwang
 Kwang is a thin Kotlin/Native wrapper around high-performance, low-overhead web server(s).
-It is in experimental state, supporting [Lwan](https://github.com/lpereira/lwan/) partially. It may has [libh2o](https://h2o.examp1e.net/) backend in the feature.
+It is in experimental state, supporting [Lwan](https://github.com/lpereira/lwan/) partially. It may has [libh2o](https://h2o.examp1e.net/) backend in the future.
 
 ## Building
 ### Cloning the repo with submodule(s)
@@ -37,19 +37,21 @@ The server will start on `localhost:8080`
 ### Building klib
 The library is very EXPERIMENTAL and likely to change significantly, using it in production code is NOT RECOMMENDED. But yes, you can build the `klib` (check `gradle linuxKlibrary`)
 
-### Suported operating system
+### Supported operating system
 Linux64
 
 ## Roadmap
 * [ ] Server configuration (`port`, ..)
 * [ ] Logging
-* [ ] H2O backend
+* [ ] H2O backend (because Lwan does not support HTTP/2)
 * [ ] Authentication
-* [ ] Finsish the wrapper
+* [ ] Finish the wrapper
 * [ ] Optimize performance
 * [ ] Template support (low priority)
 * [ ] EventBus
 * [ ] WebSocket
+* [ ] Path params
+
 
 ## Benchmark
 TODO
@@ -57,7 +59,7 @@ In case you want benchmarking Kwang, you should consider compile lwan in release
 With `autocannon -c 100 -d 40 -p 10 localhost:8080`, `Kwang` reached around 80k reqs/sec on a MSI GE72VR laptop
 
 ## Contributing
-Feel free to submit issues and enhancement requests. This is a low priority side-project to me, so there is no ETA/promise, but feel free to open PRs.
+Feel free to submit issues and enhancement requests. This is a low priority side-project to me, so there is no ETA/promise, but PRs are welcomed. 
 
 ## Why? JVM framework like Vert.X/Ktor/Spring + GraalVM makes more sense
 Agree. 
