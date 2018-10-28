@@ -1,0 +1,3 @@
+[submodule "lwan"]
+	path = lwan
+	url = https://github.com/KwangIO/lwan

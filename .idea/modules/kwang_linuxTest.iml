@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="kwang:linuxTest" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="kotlin-language" name="Kotlin">
+      <configuration version="3" platform="Native " useProjectSettings="false" isTestModule="true" externalProjectId="kwang">
+        <sourceSets>
+          <sourceSet>kwang_linuxMain</sourceSet>
+        </sourceSets>
+        <newMppModelJpsModuleKind>COMPILATION_AND_SOURCE_SET_HOLDER</newMppModelJpsModuleKind>
+        <compilerSettings />
+        <compilerArguments>
+          <option name="languageVersion" value="1.3" />
+          <option name="apiVersion" value="1.3" />
+          <option name="pluginOptions">
+            <array />
+          </option>
+          <option name="pluginClasspaths">
+            <array />
+          </option>
+          <option name="multiPlatform" value="true" />
+        </compilerArguments>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <output-test url="file://$MODULE_DIR$/../../build/classes/kotlin/linux/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../src/linuxTest">
+      <sourceFolder url="file://$MODULE_DIR$/../../src/linuxTest/kotlin" type="kotlin-test" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/linuxTest/resources" type="kotlin-test-resource" />
+    </content>
+    <orderEntry type="jdk" jdkName="Kotlin SDK" jdkType="KotlinSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="kwang_linuxMain" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../build/classes/kotlin/linux/main/kwang-cinterop-lwan.klib!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Gradle: Kotlin/Native:stdlib:1.1-dev" level="project" />
+    <orderEntry type="library" name="Gradle: Kotlin/Native:iconv:linux_x64:1.1-dev" level="project" />
+    <orderEntry type="library" name="Gradle: Kotlin/Native:linux:linux_x64:1.1-dev" level="project" />
+    <orderEntry type="library" name="Gradle: Kotlin/Native:posix:linux_x64:1.1-dev" level="project" />
+    <orderEntry type="library" name="Gradle: Kotlin/Native:zlib:linux_x64:1.1-dev" level="project" />
+  </component>
+  <component name="TestModuleProperties" production-module="kwang_linuxMain" />
+</module>

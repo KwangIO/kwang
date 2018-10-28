@@ -1,0 +1,12 @@
+headers = lwan.h
+package = lwanc
+staticLibraries = liblwan.a
+libraryPaths = ./lwan/build/src/lib
+compilerOpts = -I./lwan/src/lib -I./lwan/src/lib/other
+linkerOpts = -lz -lc -L./lwan/build/src/lib -L/usr/lib/ -llwan -lbsd
+
+---
+
+static void asJson(struct lwan_response *response) {
+    response->mime_type = "application/json; charset=utf-8";
+}
