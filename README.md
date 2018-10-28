@@ -1,6 +1,6 @@
 # Kwang
 Kwang is a thin Kotlin/Native wrapper around high-performance, low-overhead web server(s).
-It is in experimental state, supporting [Lwan](https://github.com/lpereira/lwan/) partially. It may have [libh2o](https://h2o.examp1e.net/) backend in the feature.
+It is in experimental state, supporting [Lwan](https://github.com/lpereira/lwan/) partially. It may has [libh2o](https://h2o.examp1e.net/) backend in the feature.
 
 ## Building
 ### Cloning the repo with submodule(s)
@@ -41,12 +41,20 @@ The library is very EXPERIMENTAL and likely to change significantly, using it in
 Linux64
 
 ## Roadmap
+* [ ] Server configuration (`port`, ..)
 * [ ] Logging
 * [ ] H2O backend
 * [ ] Authentication
 * [ ] Finsish the wrapper
 * [ ] Optimize performance
-* [ ] Ready to use `klib`
 * [ ] Template support (low priority)
-* [ ] Eventbus
+* [ ] EventBus
 * [ ] WebSocket
+
+## Benchmark
+TODO
+In case you want benchmarking Kwang, you should consider compile lwan in release mode and pass `-opt` to `konanc`
+With `autocannon -c 100 -d 40 -p 10 localhost:8080`, `Kwang` reached around 80k reqs/sec on a MSI GE72VR laptop
+
+## Contributing
+Feel free to submit issues and enhancement requests. This is a low priority side-project to me, so there is no ETA/promise, but feel free to open PRs.
