@@ -26,8 +26,8 @@
     <output-test url="file://$MODULE_DIR$/../../build/classes/kotlin/linux/test" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../src/linuxTest">
-      <sourceFolder url="file://$MODULE_DIR$/../../src/linuxTest/kotlin" type="kotlin-test" />
-      <sourceFolder url="file://$MODULE_DIR$/../../src/linuxTest/resources" type="kotlin-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/linuxTest/kotlin" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/linuxTest/resources" type="java-test-resource" />
     </content>
     <orderEntry type="jdk" jdkName="Kotlin SDK" jdkType="KotlinSDK" />
     <orderEntry type="sourceFolder" forTests="false" />

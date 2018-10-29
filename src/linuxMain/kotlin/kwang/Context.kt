@@ -10,5 +10,3 @@ interface RequestContext {
 interface ResponseContext {
     fun end(body: String): Boolean
 }
-
-data class Context(val request: RequestContext, val response: ResponseContext)
