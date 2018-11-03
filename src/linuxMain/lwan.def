@@ -7,6 +7,38 @@ linkerOpts = -lz -lc -L./lwan/build/src/lib -L/usr/lib/ -llwan -lbsd
 
 ---
 
-static void asJson(struct lwan_response *response) {
-    response->mime_type = "application/json; charset=utf-8";
+static void asJson(struct lwan_response *response, char *mime_type) {
+    response->mime_type = mime_type;
 }
+
+
+struct lwan_request_parser_helper {
+    struct lwan_value *buffer;		/* The whole request buffer */
+    char *next_request;			/* For pipelined requests */
+    struct lwan_value accept_encoding;	/* Accept-Encoding: */
+
+    struct { /* If-Modified-Since: */
+        struct lwan_value raw;
+        time_t parsed;
+    } if_modified_since;
+
+    struct { /* Range: */
+        struct lwan_value raw;
+        off_t from, to;
+    } range;
+
+    struct lwan_value cookie;		/* Cookie: */
+
+    struct lwan_value query_string;	/* Stuff after ? and before # */
+    struct lwan_value fragment;		/* Stuff after # */
+    struct lwan_value content_length;	/* Content-Length: */
+    struct lwan_value authorization;	/* Authorization: */
+
+    struct lwan_value post_data;	/* Request body for POST */
+    struct lwan_value content_type;	/* Content-Type: for POST */
+
+    time_t error_when_time;		/* Time to abort request read */
+    int error_when_n_packets;		/* Max. number of packets */
+    int urls_rewritten;			/* Times URLs have been rewritten */
+    char connection;			/* k=keep-alive, c=close, u=upgrade */
+};

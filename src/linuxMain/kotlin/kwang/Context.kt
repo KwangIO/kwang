@@ -5,8 +5,11 @@ interface RequestContext {
     fun getCookie(key: String): String?
     fun getBodyParam(key: String): String?
     val method: Int
+    val authorization: String?
 }
 
 interface ResponseContext {
+    fun setHeader()
     fun end(body: String): Boolean
+    fun setMimeType(mimeType: String) : ResponseContext
 }
