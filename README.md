@@ -4,8 +4,8 @@ It is in experimental state, supporting [Lwan](https://github.com/lpereira/lwan/
 
 [![Build Status](https://travis-ci.com/KwangIO/kwang.svg?branch=master)](https://travis-ci.com/KwangIO/kwang)
 [![Build status](https://quangio.visualstudio.com/Kwang/_apis/build/status/Kwang-Gradle-CI)](https://quangio.visualstudio.com/Kwang/_build/latest?definitionId=1)
-
-
+[![codebeat badge](https://codebeat.co/badges/63348e80-82c4-484f-9cd2-ff85dea61f36)](https://codebeat.co/projects/github-com-kwangio-kwang-master)
+[![CodeFactor](https://www.codefactor.io/repository/github/kwangio/kwang/badge/master)](https://www.codefactor.io/repository/github/kwangio/kwang/overview/master)
 
 ## Building
 ### Cloning the repo with submodule(s)
@@ -26,7 +26,7 @@ Open `SampleLinux.kt`
 class SampleHandler: KwangHandler("/") {
     override fun handleGet(request: RequestContext, response: ResponseContext): UInt {
         println("Auth: ${request.authorization}")
-        response.end("123")
+        response.setHeaders(listOf(Pair("haha", "abc"))).respond("123")
         return 200u
     }
 }
