@@ -10,6 +10,5 @@ interface RequestContext {
 
 interface ResponseContext {
     fun setHeader()
-    fun end(body: String): Boolean
-    fun setMimeType(mimeType: String) : ResponseContext
+    fun end(body: String, mimeType: String = "text/plain")
 }

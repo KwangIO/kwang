@@ -8,13 +8,14 @@ import kwang.backend.lwan.ServerLwan
 class SampleHandler: KwangHandler("/") {
     override fun handleGet(request: RequestContext, response: ResponseContext): UInt {
         println("Auth: ${request.authorization}")
-        return if (response.setMimeType("text/plain").end("123")) 200u else 500u
+        response.end("123")
+        return 200u
     }
 }
 
 class OtherSample: KwangHandler("/hello") {
     override fun handleGet(request: RequestContext, response: ResponseContext): UInt {
-        response.setMimeType("text/plain").end("""{"hello":"${request.getQuery("name")}"}""")
+        response.end("""{"hello":"${request.getQuery("name")}"}""")
         return 200u
     }
 }

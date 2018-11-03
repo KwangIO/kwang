@@ -3,11 +3,11 @@ package = lwanc
 staticLibraries = liblwan.a
 libraryPaths = ./lwan/build/src/lib
 compilerOpts = -I./lwan/src/lib -I./lwan/src/lib/other
-linkerOpts = -lz -lc -L./lwan/build/src/lib -L/usr/lib/ -llwan -lbsd
+linkerOpts = -L./lwan/build/src/lib -L/usr/lib/ -lz -llwan -lbsd
 
 ---
 
-static void asJson(struct lwan_response *response, char *mime_type) {
+static void lwan_set_mime_type(struct lwan_response *response, char *mime_type) {
     response->mime_type = mime_type;
 }
 
