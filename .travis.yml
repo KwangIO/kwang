@@ -22,5 +22,8 @@ cache:
   - $HOME/.gradle/wrapper/
   - $HOME/.konan
   - .konan
-before_install: chmod +x buildLwan.sh && ./buildLwan.sh
+before_install:
+  - sudo unlink /usr/bin/gcc
+  - sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc
+  - chmod +x buildLwan.sh && ./buildLwan.sh
 script: ./gradlew build
