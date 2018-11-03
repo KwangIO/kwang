@@ -1,9 +1,15 @@
+language: java
+jdk: oraclejdk8
+os: linux
 addons:
   apt:
+    sources:
+    - ubuntu-toolchain-r-test
     packages:
     - cmake
     - zlib1g-dev
     - pkg-config
+    - gcc-7
 
 before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -12,11 +18,6 @@ cache:
   directories:
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
-matrix:
-  include:
-  - language: c
-    script: sh buildLwan.sh
-  - language: java
-    jdk: oraclejdk8
-    script: gradle build
 
+before_script: sh buildLwan
+script: /gradlew build
