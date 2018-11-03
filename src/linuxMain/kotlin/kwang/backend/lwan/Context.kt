@@ -7,10 +7,6 @@ import lwanc.*
 
 
 internal class RequestContextLwan(private val cRequest: CPointer<lwan_request>): RequestContext {
-    init {
-        cRequest.pointed.helper!!.pointed.authorization
-    }
-
     override val authorization = cRequest.pointed.helper?.let {
         it.pointed.authorization.value?.toKString()
     }
