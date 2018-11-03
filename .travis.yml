@@ -1,6 +1,8 @@
 language: java
 jdk: oraclejdk8
 os: linux
+compiler:
+- gcc
 addons:
   apt:
     sources:
@@ -19,5 +21,5 @@ cache:
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
 
-before_script: sh buildLwan
+before_script: chmod +x buildLwan.sh && ./buildLwan.sh
 script: /gradlew build
