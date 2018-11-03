@@ -23,8 +23,8 @@
     <output url="file://$MODULE_DIR$/../../build/classes/kotlin/linux/main" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../src/linuxMain">
-      <sourceFolder url="file://$MODULE_DIR$/../../src/linuxMain/kotlin" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../src/linuxMain/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/linuxMain/kotlin" type="kotlin-source" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/linuxMain/resources" type="kotlin-resource" />
     </content>
     <orderEntry type="jdk" jdkName="Kotlin SDK" jdkType="KotlinSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -37,10 +37,10 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Gradle: Kotlin/Native:stdlib:1.1-dev" level="project" />
-    <orderEntry type="library" name="Gradle: Kotlin/Native:iconv:linux_x64:1.1-dev" level="project" />
-    <orderEntry type="library" name="Gradle: Kotlin/Native:linux:linux_x64:1.1-dev" level="project" />
-    <orderEntry type="library" name="Gradle: Kotlin/Native:posix:linux_x64:1.1-dev" level="project" />
-    <orderEntry type="library" name="Gradle: Kotlin/Native:zlib:linux_x64:1.1-dev" level="project" />
+    <orderEntry type="library" name="Gradle: Kotlin/Native:zlib:linux_x64:1.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: Kotlin/Native:posix:linux_x64:1.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: Kotlin/Native:linux:linux_x64:1.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: Kotlin/Native:iconv:linux_x64:1.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: Kotlin/Native:stdlib:1.0.1" level="project" />
   </component>
 </module>
