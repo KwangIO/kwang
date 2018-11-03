@@ -6,7 +6,7 @@ It is in experimental state, supporting [Lwan](https://github.com/lpereira/lwan/
 [![Build status](https://quangio.visualstudio.com/Kwang/_apis/build/status/Kwang-Gradle-CI)](https://quangio.visualstudio.com/Kwang/_build/latest?definitionId=1)
 [![codebeat badge](https://codebeat.co/badges/63348e80-82c4-484f-9cd2-ff85dea61f36)](https://codebeat.co/projects/github-com-kwangio-kwang-master)
 [![CodeFactor](https://www.codefactor.io/repository/github/kwangio/kwang/badge/master)](https://www.codefactor.io/repository/github/kwangio/kwang/overview/master)
-
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/KwangIO/kwang.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/KwangIO/kwang/alerts/)
 ## Building
 ### Cloning the repo with submodule(s)
 ```
