@@ -21,8 +21,6 @@ cache:
   directories:
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
-  - $HOME/.konan
-  - .konan
 before_install:
   - sudo unlink /usr/bin/gcc
   - sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc

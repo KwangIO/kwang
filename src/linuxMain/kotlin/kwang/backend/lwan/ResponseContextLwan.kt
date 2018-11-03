@@ -1,17 +1,23 @@
 package kwang.backend.lwan
 
-import kotlinx.cinterop.convert
-import kotlinx.cinterop.cstr
-import kotlinx.cinterop.ptr
+import kotlinx.cinterop.*
 import kwang.ResponseContext
-import lwanc.lwan_response
-import lwanc.lwan_set_mime_type
-import lwanc.lwan_strbuf_set
+import lwanc.*
 
-internal class ResponseContextLwan(private val cResponse: lwan_response) : ResponseContext {
-    override fun setHeader() = TODO()
-    override fun end(body: String, mimeType: String) {
-        lwan_set_mime_type(cResponse.ptr, mimeType.cstr)
+internal class ResponseContextLwan(
+    private val cResponse: lwan_response, private val cRequest: CPointer<lwan_request>
+) : ResponseContext {
+    override fun setHeaders(headers: List<Pair<String, String>>): ResponseContext {
+        cResponse.headers = headers.toKeyValues()
+        return this
+    }
+    override fun sendChunk(body: String) { // TODO: Implement me
+        lwan_strbuf_set(cResponse.buffer, body, body.length.convert())
+        lwan_response_send_chunk(cRequest)
+    }
+
+    override fun respond(body: String, mimeType: String) {
+        lwan_set_mime_type(cResponse.ptr, mimeType)
         lwan_strbuf_set(cResponse.buffer, body, body.length.convert())
     }
 }

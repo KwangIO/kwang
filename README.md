@@ -2,6 +2,11 @@
 Kwang is a thin Kotlin/Native wrapper around high-performance, low-overhead web server(s).
 It is in experimental state, supporting [Lwan](https://github.com/lpereira/lwan/) partially. It may has [libh2o](https://h2o.examp1e.net/) backend in the future.
 
+[![Build Status](https://travis-ci.com/KwangIO/kwang.svg?branch=master)](https://travis-ci.com/KwangIO/kwang)
+[![Build status](https://quangio.visualstudio.com/Kwang/_apis/build/status/Kwang-Gradle-CI)](https://quangio.visualstudio.com/Kwang/_build/latest?definitionId=1)
+
+
+
 ## Building
 ### Cloning the repo with submodule(s)
 ```
@@ -18,15 +23,25 @@ If you want more customization, see [lwan#Building](https://github.com/lpereira/
 ### Sample
 Open `SampleLinux.kt`
 ```kotlin
-class SampleHandler: KwangHandlerLwan("/") {
-    override fun handleGet(context: Context): UInt {
-        return if (context.response.end("123")) 200u else 500u
+class SampleHandler: KwangHandler("/") {
+    override fun handleGet(request: RequestContext, response: ResponseContext): UInt {
+        println("Auth: ${request.authorization}")
+        response.end("123")
+        return 200u
+    }
+}
+
+class OtherSample: KwangHandler("/hello") {
+    override fun handleGet(request: RequestContext, response: ResponseContext): UInt {
+        response.end("""{"hello":"${request.getQuery("name")}"}""")
+        return 200u
     }
 }
 
 fun main(args: Array<String>) {
-    KwangServer(listOf(SampleHandler()))
+    ServerLwan(listOf(SampleHandler(), OtherSample()), LwanConfig("localhost:8081"))
 }
+
 ```
 
 #### Running the sample
@@ -41,7 +56,7 @@ The library is very EXPERIMENTAL and likely to change significantly, using it in
 Linux64
 
 ## Roadmap
-* [ ] Server configuration (`port`, ..)
+* [x] Server configuration (`port`, ..)
 * [ ] Logging
 * [ ] H2O backend (because Lwan does not support HTTP/2)
 * [ ] Authentication
@@ -68,6 +83,6 @@ Agree.
 I am not in the mood of choosing bike shed's name. Moreover, it is not that weird you racist people! [Kwang in Korean](https://www.wikiwand.com/en/Kwang)
 
 ## Known issue
-For current Kotlin/Native version (`1.3.0-rc-190`), it will not compile due to linker issue (please clone Kotlin/Native from github or wait for the next release)
+For current Kotlin/Native version (`1.3.0`), it will not compile due to linker issue (please clone Kotlin/Native from github or wait for the next release)
 
 (Kudos to Kotlin/Native team)

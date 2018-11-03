@@ -7,10 +7,14 @@ linkerOpts = -L./lwan/build/src/lib -L/usr/lib/ -lz -llwan -lbsd
 
 ---
 
-static void lwan_set_mime_type(struct lwan_response *response, char *mime_type) {
+static void lwan_set_mime_type(struct lwan_response *response, const char *mime_type) {
     response->mime_type = mime_type;
 }
 
+static void lwan_set_key_value(struct lwan_key_value *kv, const char *key,const char *value) {
+    kv->key = key;
+    kv->value = value;
+}
 
 struct lwan_request_parser_helper {
     struct lwan_value *buffer;		/* The whole request buffer */
