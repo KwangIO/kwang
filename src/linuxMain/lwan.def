@@ -9,14 +9,14 @@ linkerOpts = -L./lwan/build/src/lib -L/usr/lib/ -lz -llwan -lbsd
 
 static void lwan_set_mime_type(struct lwan_response *response, const char *mime_type) {
     response->mime_type = malloc(strlen(mime_type) + 1);
-    strcpy(response->mime_type, mime_type);
+    memcpy(response->mime_type, mime_type, strlen(mime_type) + 1);
 }
 
 static void lwan_set_key_value(struct lwan_key_value *kv, const char *key,const char *value) {
     kv->key = malloc(strlen(key) + 1);
     kv->value = malloc(strlen(value) + 1);
-    strcpy(kv->key, key);
-    strcpy(kv->value, value);
+    memcpy(kv->key, key, strlen(key) + 1);
+    memcpy(kv->value, value, strlen(value) + 1);
 }
 
 struct lwan_request_parser_helper {

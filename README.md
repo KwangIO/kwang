@@ -26,14 +26,9 @@ Open `SampleLinux.kt`
 class SampleHandler: KwangHandler("/") {
     override fun handleGet(request: RequestContext, response: ResponseContext): UInt {
         println("Auth: ${request.authorization}")
-        response.setHeaders(listOf(Pair("haha", "abc"))).respond("123")
-        return 200u
-    }
-}
-
-class OtherSample: KwangHandler("/hello") {
-    override fun handleGet(request: RequestContext, response: ResponseContext): UInt {
-        response.end("""{"hello":"${request.getQuery("name")}"}""")
+        response
+            .setHeaders(listOf(Pair("meaning-of-life", "42"), Pair("looking-for", "job")))
+            .respond("123", "application/json")
         return 200u
     }
 }
@@ -47,7 +42,7 @@ fun main(args: Array<String>) {
 #### Running the sample
 `gradle runProgram` (no colorful output) or  `gradle build` (test will fail at the moment, just ignore it and run `build/bin/linux/main/release/executable/kwang.kexe`)
 
-The server will start on `localhost:8080`
+The server will start on `localhost:8081`
 
 ### Building klib
 The library is very EXPERIMENTAL and likely to change significantly, using it in production code is NOT RECOMMENDED. But yes, you can build the `klib` (check `gradle linuxKlibrary`)
