@@ -1,6 +1,6 @@
 # Kwang
 Kwang is a thin Kotlin/Native wrapper around high-performance, low-overhead web server(s).
-It is in experimental state, supporting [Lwan](https://github.com/lpereira/lwan/) partially. It may has [libh2o](https://h2o.examp1e.net/) backend in the future.
+It is in experimental state, supporting [Lwan](https://github.com/lpereira/lwan/) partially. It may have [libh2o](https://h2o.examp1e.net/) backend in the future.
 
 [![Build Status](https://travis-ci.com/KwangIO/kwang.svg?branch=master)](https://travis-ci.com/KwangIO/kwang)
 [![Build status](https://quangio.visualstudio.com/Kwang/_apis/build/status/Kwang-Gradle-CI)](https://quangio.visualstudio.com/Kwang/_build/latest?definitionId=1)
@@ -15,10 +15,15 @@ cd kwang
 ```
 You can import it with IntelliJ IDEA
 ### Building Lwan
+`cmake`, `zlib`, and `libbsd` should be installed before building. 
+* Arch Linux: `pacman -S cmake zlib libbsd`
+* Ubuntu: `apt-get update && apt-get install git cmake zlib1g-dev pkg-config libbsd-dev`
+* I have not tried to build it on other operating systems
 ```
 ./buildLwan.sh
 ```
-If you want more customization, see [lwan#Building](https://github.com/lpereira/lwan#building) for how manually build it
+If you want more customization, see [lwan#Building](https://github.com/lpereira/lwan#building).
+ 
 
 ### Sample
 Open `SampleLinux.kt`
@@ -81,3 +86,12 @@ I am not in the mood of choosing bike shed's name. Moreover, it is not that weir
 For current Kotlin/Native version (`1.3.0`), it will not compile due to linker issue (please clone Kotlin/Native from github or wait for the next release)
 
 (Kudos to Kotlin/Native team)
+##### Use latest Kotlin/Native compiler
+```bash
+git clone https://github.com/JetBrains/kotlin-native --depth 1 -b master
+cd kotlin-native
+./gradlew dependencies:update
+./gradlew bundle
+cp -R dist/* ~/.konan/kotlin-native-linux-[ver]
+```
+or you can set `konan.home` project property

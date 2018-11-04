@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [[ ! -d "lwan" ]]; then
     echo "Cloning lwan"
@@ -8,4 +8,4 @@ echo "Building Lwan"
 cd lwan
 rm -rf build
 mkdir build && cd build
-cmake .. && make
+cmake $1 .. && make $2
