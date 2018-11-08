@@ -1,5 +1,7 @@
 package kwang
 
+import kwang.type.Header
+
 interface RequestContext {
     fun getQuery(key: String): String?
     fun getCookie(key: String): String?
@@ -13,5 +15,5 @@ interface RequestContext {
 interface ResponseContext {
     fun respond(body: String, mimeType: String = "text/plain")
     fun sendChunk(body: String)
-    fun setHeaders(headers: List<Pair<String, String>>) : ResponseContext
+    fun setHeaders(headers: List<Header>) : ResponseContext
 }

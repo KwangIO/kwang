@@ -2,12 +2,13 @@ package kwang.backend.lwan
 
 import kotlinx.cinterop.*
 import kwang.ResponseContext
+import kwang.type.Header
 import lwanc.*
 
 internal class ResponseContextLwan(
     private val cResponse: lwan_response, private val cRequest: CPointer<lwan_request>
 ) : ResponseContext {
-    override fun setHeaders(headers: List<Pair<String, String>>): ResponseContext {
+    override fun setHeaders(headers: List<Header>): ResponseContext {
         cResponse.headers = headers.toKeyValues()
         return this
     }
