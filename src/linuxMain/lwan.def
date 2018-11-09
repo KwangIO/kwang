@@ -2,7 +2,7 @@ headers = lwan.h
 package = lwanc
 staticLibraries = liblwan.a
 libraryPaths = ./lwan/build/src/lib
-compilerOpts = -I./lwan/src/lib -I./lwan/src/lib/other
+compilerOpts = -I./lwan/src/lib
 linkerOpts = -L./lwan/build/src/lib -L/usr/lib/ -lz -llwan -lbsd
 
 ---
@@ -12,11 +12,13 @@ static void lwan_set_mime_type(struct lwan_response *response, const char *mime_
     memcpy(response->mime_type, mime_type, strlen(mime_type) + 1);
 }
 
-static void lwan_set_key_value(struct lwan_key_value *kv, const char *key,const char *value) {
-    kv->key = malloc(strlen(key) + 1);
-    kv->value = malloc(strlen(value) + 1);
-    memcpy(kv->key, key, strlen(key) + 1);
-    memcpy(kv->value, value, strlen(value) + 1);
+static void lwan_set_key_value(struct lwan_key_value *kv, const char *key, const char *value) {
+    size_t key_len = strlen(key) + 1;
+    size_t value_len = strlen(value) + 1;
+    kv->key = malloc(key_len);
+    kv->value = malloc(value_len);
+    memcpy(kv->key, key, key_len);
+    memcpy(kv->value, value, value_len);
 }
 
 struct lwan_request_parser_helper {
@@ -35,14 +37,17 @@ struct lwan_request_parser_helper {
     } range;
 
     struct lwan_value cookie;		/* Cookie: */
-
     struct lwan_value query_string;	/* Stuff after ? and before # */
     struct lwan_value fragment;		/* Stuff after # */
-    struct lwan_value content_length;	/* Content-Length: */
+
     struct lwan_value authorization;	/* Authorization: */
 
     struct lwan_value post_data;	/* Request body for POST */
     struct lwan_value content_type;	/* Content-Type: for POST */
+    struct lwan_value content_length;	/* Content-Length: */
+
+    char *header_start[64];		/* Headers: n: start, n+1: end */
+    size_t n_header_start;		/* len(header_start) */
 
     time_t error_when_time;		/* Time to abort request read */
     int error_when_n_packets;		/* Max. number of packets */

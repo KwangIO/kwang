@@ -10,10 +10,11 @@ interface RequestContext {
     val method: Int
     val authorization: String?
     val contentType: String?
+    fun getHeader(key: String): String?
 }
 
 interface ResponseContext {
     fun respond(body: String, mimeType: String = "text/plain")
     fun sendChunk(body: String)
-    fun setHeaders(headers: List<Header>) : ResponseContext
+    fun addHeaders(headers: Collection<Header>) : ResponseContext
 }

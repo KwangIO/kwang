@@ -4,7 +4,7 @@ It is in experimental state, supporting [Lwan](https://github.com/lpereira/lwan/
 
 [![Build Status](https://travis-ci.com/KwangIO/kwang.svg?branch=master)](https://travis-ci.com/KwangIO/kwang)
 [![Build status](https://quangio.visualstudio.com/Kwang/_apis/build/status/Kwang-Gradle-CI)](https://quangio.visualstudio.com/Kwang/_build/latest?definitionId=1)
-[![codebeat badge](https://codebeat.co/badges/63348e80-82c4-484f-9cd2-ff85dea61f36)](https://codebeat.co/projects/github-com-kwangio-kwang-master)
+[![CodeBeat badge](https://codebeat.co/badges/63348e80-82c4-484f-9cd2-ff85dea61f36)](https://codebeat.co/projects/github-com-kwangio-kwang-master)
 [![CodeFactor](https://www.codefactor.io/repository/github/kwangio/kwang/badge/master)](https://www.codefactor.io/repository/github/kwangio/kwang/overview/master)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/KwangIO/kwang.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/KwangIO/kwang/alerts/)
 ## Building
@@ -28,13 +28,22 @@ If you want more customization, see [lwan#Building](https://github.com/lpereira/
 ### Sample
 Open `SampleLinux.kt`
 ```kotlin
-class SampleHandler: KwangHandler("/") {
-    override fun handleGet(request: RequestContext, response: ResponseContext): UInt {
+class SampleHandler : KwangHandler("/") {
+    override fun handleGet(request: RequestContext, response: ResponseContext): StatusCode {
         println("Auth: ${request.authorization}")
-        response
-            .setHeaders(listOf(Pair("meaning-of-life", "42"), Pair("looking-for", "job")))
-            .respond("123", "application/json")
-        return 200u
+        println("Origin:" + request.getHeader("Origin"))
+        response withHeaders listOf(
+            Header("meaning-of-life", "42"),
+            Header("looking-for", "job")
+        ) plain ("123")
+        return StatusCode(200u)
+    }
+}
+
+class OtherSample : KwangHandler("/hello") {
+    override fun handleGet(request: RequestContext, response: ResponseContext): StatusCode {
+        response json ("""{"hello":"${request.getQuery("name")}"}""")
+        return StatusCode(200u)
     }
 }
 

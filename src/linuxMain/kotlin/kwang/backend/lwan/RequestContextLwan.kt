@@ -14,6 +14,7 @@ internal class RequestContextLwan(private val cRequest: CPointer<lwan_request>) 
     override fun getQuery(key: String) = lwan_request_get_query_param(cRequest, key)?.toKString()
     override fun getCookie(key: String) = lwan_request_get_cookie(cRequest, key)?.toKString()
     override fun getBodyParam(key: String) = lwan_request_get_post_param(cRequest, key)?.toKString()
+    override fun getHeader(key: String) = lwan_request_get_header(cRequest, key)?.toKString()
 
     override val requestBody
         get() = lwan_request_get_request_body(cRequest)?.toKString()

@@ -10,8 +10,10 @@ fun staticProcess(
     data: COpaquePointer?
 ): lwan_http_status {
     initRuntimeIfNeeded()
+    val requestContext = RequestContextLwan(req!!)
+    val responseContext = ResponseContextLwan(res!!.pointed, req)
     val handler = data?.asStableRef<KwangHandler>()?.get() ?: throw Exception("Cannot convert pointer into handler")
-    return handler.process(RequestContextLwan(req!!), ResponseContextLwan(res!!.pointed, req))
+    return handler.process(requestContext, responseContext).code
 }
 
 class ServerLwan(private val handlers: List<KwangHandler> = emptyList(), private val config: LwanConfig? = null) {

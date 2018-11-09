@@ -8,8 +8,9 @@ import lwanc.*
 internal class ResponseContextLwan(
     private val cResponse: lwan_response, private val cRequest: CPointer<lwan_request>
 ) : ResponseContext {
-    override fun setHeaders(headers: List<Header>): ResponseContext {
-        cResponse.headers = headers.toKeyValues()
+    private val headers = mutableListOf<Header>()
+    override fun addHeaders(headers: Collection<Header>): ResponseContext {
+        this.headers.addAll(headers)
         return this
     }
     override fun sendChunk(body: String) { // TODO: Implement me
@@ -18,6 +19,7 @@ internal class ResponseContextLwan(
     }
 
     override fun respond(body: String, mimeType: String) {
+        cResponse.headers = headers.toKeyValues()
         lwan_set_mime_type(cResponse.ptr, mimeType)
         lwan_strbuf_set(cResponse.buffer, body, body.length.convert())
     }

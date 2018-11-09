@@ -6,28 +6,27 @@ import kwang.extension.json
 import kwang.extension.plain
 import kwang.extension.withHeaders
 import kwang.type.Header
+import kwang.type.StatusCode
 
-@ExperimentalUnsignedTypes
 class SampleHandler : KwangHandler("/") {
-    override fun handleGet(request: RequestContext, response: ResponseContext): UInt {
+    override fun handleGet(request: RequestContext, response: ResponseContext): StatusCode {
         println("Auth: ${request.authorization}")
+        println("Origin:" + request.getHeader("Origin"))
         response withHeaders listOf(
             Header("meaning-of-life", "42"),
             Header("looking-for", "job")
         ) plain ("123")
-        return 200u
+        return StatusCode(200u)
     }
 }
 
 class OtherSample : KwangHandler("/hello") {
-    override fun handleGet(request: RequestContext, response: ResponseContext): UInt {
+    override fun handleGet(request: RequestContext, response: ResponseContext): StatusCode {
         response json ("""{"hello":"${request.getQuery("name")}"}""")
-        return 200u
+        return StatusCode(200u)
     }
 }
 
-
-@ExperimentalUnsignedTypes
 fun main(args: Array<String>) {
     ServerLwan(listOf(SampleHandler(), OtherSample()), LwanConfig("localhost:8081"))
 }
