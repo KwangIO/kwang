@@ -104,5 +104,4 @@ cp -R dist/* ~/.konan/kotlin-native-linux-[ver]
 ```
 or you can set `konan.home` project property
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](C44YKYMVNL4TA)
-
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=C44YKYMVNL4TA)
