@@ -1,13 +1,14 @@
 package kwang
 
 import kwang.type.Header
+import kwang.type.HttpMethod
 
 interface RequestContext {
     fun getQuery(key: String): String?
     fun getCookie(key: String): String?
     fun getBodyParam(key: String): String?
     val requestBody: String?
-    val method: Int
+    val method: HttpMethod
     val authorization: String?
     val contentType: String?
     fun getHeader(key: String): String?

@@ -66,15 +66,14 @@ Linux64
 
 ## Roadmap
 * [x] Server configuration (`port`, ..)
+* [x] CORS support (partially)
 * [ ] Logging
 * [ ] H2O backend (because Lwan does not support HTTP/2)
-* [ ] Authentication
 * [ ] Finish the wrapper
 * [ ] Optimize performance
-* [ ] Template support (low priority)
 * [ ] EventBus
 * [ ] WebSocket
-* [ ] Path params
+* [ ] Path params / Full-featured router
 
 
 ## Benchmark
@@ -104,3 +103,6 @@ cd kotlin-native
 cp -R dist/* ~/.konan/kotlin-native-linux-[ver]
 ```
 or you can set `konan.home` project property
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](C44YKYMVNL4TA)
+

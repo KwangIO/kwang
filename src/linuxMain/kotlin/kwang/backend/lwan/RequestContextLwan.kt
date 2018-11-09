@@ -4,6 +4,7 @@ import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.pointed
 import kotlinx.cinterop.toKString
 import kwang.RequestContext
+import kwang.type.HttpMethod
 import lwanc.*
 
 internal class RequestContextLwan(private val cRequest: CPointer<lwan_request>) : RequestContext {
@@ -21,5 +22,11 @@ internal class RequestContextLwan(private val cRequest: CPointer<lwan_request>) 
     override val contentType
         get() = lwan_request_get_content_type(cRequest)?.toKString()
     override val method
-        get() = lwan_request_get_method(cRequest)
+        get() = when(lwan_request_get_method(cRequest)) {
+            REQUEST_METHOD_GET -> HttpMethod.GET
+            REQUEST_METHOD_POST -> HttpMethod.POST
+            REQUEST_METHOD_DELETE -> HttpMethod.DELETE
+            REQUEST_METHOD_OPTIONS -> HttpMethod.OPTIONS
+            else -> HttpMethod.INVALID
+        }
 }

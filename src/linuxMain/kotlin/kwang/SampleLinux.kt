@@ -5,6 +5,7 @@ import kwang.backend.lwan.ServerLwan
 import kwang.extension.json
 import kwang.extension.plain
 import kwang.extension.withHeaders
+import kwang.interceptor.CorsInterceptor
 import kwang.type.Header
 import kwang.type.StatusCode
 
@@ -28,5 +29,8 @@ class OtherSample : KwangHandler("/hello") {
 }
 
 fun main(args: Array<String>) {
-    ServerLwan(listOf(SampleHandler(), OtherSample()), LwanConfig("localhost:8081"))
+    ServerLwan(
+        listOf(SampleHandler(), OtherSample()), LwanConfig("localhost:8081"),
+        listOf(CorsInterceptor("http://google.com"))
+    )
 }

@@ -1,6 +1,7 @@
 package kwang.backend.lwan
 
 import kotlinx.cinterop.*
+import kwang.Interceptor
 import kwang.KwangHandler
 import lwanc.*
 
@@ -16,7 +17,11 @@ fun staticProcess(
     return handler.process(requestContext, responseContext).code
 }
 
-class ServerLwan(private val handlers: List<KwangHandler> = emptyList(), private val config: LwanConfig? = null) {
+class ServerLwan(
+    private val handlers: List<KwangHandler> = emptyList(),
+    private val config: LwanConfig? = null,
+    private val interceptors: Collection<Interceptor> = emptyList()
+) {
     init {
         memScoped {
             val l = alloc<lwan>()
@@ -40,6 +45,7 @@ class ServerLwan(private val handlers: List<KwangHandler> = emptyList(), private
             }
             val urlMap = allocArray<lwan_url_map>(handlers.size + 1)
             for (i in 0 until handlers.size) {
+                handlers[i].interceptors = interceptors
                 urlMap[i].prefix = handlers[i].url.cstr.ptr
                 urlMap[i].data = handlers[i].kwangHandler
                 urlMap[i].handler = staticCFunction(::staticProcess)
